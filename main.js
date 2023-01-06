@@ -1,16 +1,11 @@
-'use strict'
+ 'use strict'
 const birthYear = Number(prompt('Введіть рік народження'));
 const city = prompt('У якому місті ви живете?');
 const sport = prompt('Ваш улюбленний вид спорту?');
 
 const currentYear = new Date().getFullYear();
 
-let age;
-if(birthYear === 0) {
-    age = 'Шкода, що Ви не захотіли ввести свою дату народження';
-} else {
-    age = `${currentYear - birthYear - 1} або ${currentYear - birthYear}`;
-}
+const age = birthYear ? `${currentYear - birthYear - 1} або ${currentYear - birthYear}` : 'Шкода, що Ви не захотіли ввести свою дату народження';
 
 let userCity;
 if (city === 'Київ') {
@@ -21,7 +16,9 @@ if (city === 'Київ') {
     userCity = 'Ти живеш у столиці Великобританії';
 } else if(city === null) {
     userCity = 'Шкода, що Ви не захотіли ввести своє місто'
-} else {
+} else if (city === '') {
+    userCity = 'Шкода, що Ви не захотіли ввести своє місто'
+}else {
     userCity = 'Ти живеш у місті ' + city;
 }
 
@@ -34,7 +31,10 @@ if (sport === 'Футбол') {
     userSport = 'Круто! Хочеш стати Джеймсоном Лєброном,';
 } else if (sport === null) {
     userSport = 'Шкода, що Ви не захотіли ввести свій улюбленний спорт';
-} else {
+} else if (sport === '') {
+    userSport = 'Шкода, що Ви не захотіли ввести свій улюбленний спорт';
+}
+ else {
     userSport = `Сподіваюсь ти станеш гарним гравцем у ${sport}`;
 }
 
